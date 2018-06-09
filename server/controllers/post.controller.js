@@ -87,3 +87,21 @@ export function editPost(req, res) {
     res.json({ post });
   });
 }
+
+export function voteDownPost(req, res) {
+  Post.update({ cuid: req.params.cuid }, { $inc: { voteCount: -1 } }).exec((err, post) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ post });
+  });
+}
+
+export function voteUpPost(req, res) {
+  Post.update({ cuid: req.params.cuid }, { $inc: { voteCount: 1 } }).exec((err, post) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ post });
+  });
+}
