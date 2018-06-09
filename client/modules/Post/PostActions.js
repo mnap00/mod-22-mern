@@ -5,6 +5,8 @@ export const ADD_POST = 'ADD_POST';
 export const ADD_POSTS = 'ADD_POSTS';
 export const DELETE_POST = 'DELETE_POST';
 export const EDIT_POST = 'EDIT_POST';
+export const VOTE_DOWN_POST = 'VOTE_DOWN_POST';
+export const VOTE_UP_POST = 'VOTE_UP_POST';
 
 // Export Actions
 export function addPost(post) {
@@ -77,5 +79,35 @@ export function editPostRequest(cuid, post) {
         content: post.content,
       },
     }).then(() => dispatch(editPost(cuid, post)));
+  };
+}
+
+export function voteDownPost(cuid) {
+  return {
+    type: VOTE_DOWN_POST,
+    cuid,
+  };
+}
+
+export function voteDownPostRequest(cuid) {
+  return (dispatch) => {
+    return callApi(`posts/${cuid}/down`, 'put').then(
+      () => dispatch(voteDownPost(cuid))
+    );
+  };
+}
+
+export function voteUpPost(cuid) {
+  return {
+    type: VOTE_UP_POST,
+    cuid,
+  };
+}
+
+export function voteUpPostRequest(cuid) {
+  return (dispatch) => {
+    return callApi(`posts/${cuid}/up`, 'put').then(
+      () => dispatch(voteUpPost(cuid))
+    );
   };
 }

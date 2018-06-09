@@ -3,6 +3,8 @@ import {
   ADD_POSTS,
   DELETE_POST,
   EDIT_POST,
+  VOTE_DOWN_POST,
+  VOTE_UP_POST,
 } from './PostActions';
 
 // Initial State
@@ -27,9 +29,31 @@ const PostReducer = (state = initialState, action) => {
 
     case EDIT_POST :
       return {
-        data: state.data.filter(post => {
+        data: state.data.map(post => {
           return post.cuid === action.cuid ?
             Object.assign({}, post, action.post) :
+            post;
+        }),
+      };
+
+    case VOTE_DOWN_POST :
+      return {
+        data: state.data.map(post => {
+          return post.cuid === action.cuid ?
+            Object.assign({}, post, {
+              voteCount: post.voteCount - 1,
+            }) :
+            post;
+        }),
+      };
+
+    case VOTE_UP_POST :
+      return {
+        data: state.data.map(post => {
+          return post.cuid === action.cuid ?
+            Object.assign({}, post, {
+              voteCount: post.voteCount + 1,
+            }) :
             post;
         }),
       };
