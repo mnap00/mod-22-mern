@@ -19,11 +19,13 @@ function PostListItem(props) {
         <a href="#" onClick={props.onDelete}>
           <FormattedMessage id="deletePost" />
         </a>
-      </p>
-      <p className={styles['post-votes']}>
-        <a href="#" onClick={props.onVoteDown}>Downvote Post</a>
+        <a href="#" onClick={props.onVoteDown}>
+          <FormattedMessage id="voteDown" />
+        </a>
         <span>{props.post.voteCount}</span>
-        <a href="#" onClick={props.onVoteUp}>Upvote Post</a>
+        <a href="#" onClick={props.onVoteUp}>
+          <FormattedMessage id="voteUp" />
+        </a>
       </p>
       <hr className={styles.divider} />
     </div>
