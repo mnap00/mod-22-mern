@@ -29,7 +29,7 @@ const PostReducer = (state = initialState, action) => {
 
     case EDIT_POST :
       return {
-        data: state.data.filter(post => {
+        data: state.data.map(post => {
           return post.cuid === action.cuid ?
             Object.assign({}, post, action.post) :
             post;
@@ -38,7 +38,7 @@ const PostReducer = (state = initialState, action) => {
 
     case VOTE_DOWN_POST :
       return {
-        data: state.data.filter(post => {
+        data: state.data.map(post => {
           return post.cuid === action.cuid ?
             Object.assign({}, post, {
               voteCount: post.voteCount - 1,
@@ -49,7 +49,7 @@ const PostReducer = (state = initialState, action) => {
 
     case VOTE_UP_POST :
       return {
-        data: state.data.filter(post => {
+        data: state.data.map(post => {
           return post.cuid === action.cuid ?
             Object.assign({}, post, {
               voteCount: post.voteCount + 1,
