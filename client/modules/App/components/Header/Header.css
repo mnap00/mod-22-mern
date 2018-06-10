@@ -33,8 +33,13 @@
   float: right;
 }
 
+.top-bar {
+  display: flex;
+}
+
 .language-switcher {
   background: rgba(0, 0, 0, 0.1);
+  flex: 1;
 }
 
 .language-switcher ul {
