@@ -1,0 +1,31 @@
+.page-switcher {
+  background: rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.page-switcher ul {
+  list-style: none;
+  max-width: 980px;
+  margin: auto;
+}
+
+.page-switcher li {
+  display: inline-block;
+  margin: 10px;
+  padding: 5px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.page-switcher a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.page-switcher a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.selected {
+  border-bottom: 1px solid #fff;
+}
